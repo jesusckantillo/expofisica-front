@@ -11,15 +11,15 @@ const Layout = () => {
         left={0}
         top={0}
         h="100vh"
-        w="250px"
+        w="280px"
         zIndex={1}
         bg="blue.300"
       >
         <Sidebar />
       </Box>
-      <Grid gridColumn="2 / 3" p={4}>
-          <Outlet />
-        </Grid>
+      <Grid gridColumn="2 / 4" p={4}>
+        <Outlet />
+      </Grid>
     </Grid>
   );
 };
