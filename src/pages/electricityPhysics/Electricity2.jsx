@@ -2,7 +2,13 @@ import React from "react";
 
 const Electricity2 = () => {
     return (
-        <div>Experimento 2 de fisica electricidad</div>
+        <div>
+        <div>Experimento 1 de fisica mecanica</div>
+        <div>
+        <button>Iniciar Transmisión</button>
+        <button>Pausar Transmisión</button>
+        </div>
+        </div>
     )
 }
 

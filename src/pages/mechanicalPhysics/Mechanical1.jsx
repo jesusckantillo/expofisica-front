@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import socket from "../../socket";
 
 const Mechanical1 = () => {
-    return (
-        <div>Experimento 1 de fisica mecanica</div>
-    )
-}
+  const [sensorData, setSensorData] = useState({});
+  const [experimentCode, setExperimentCode] = useState("FREEFALL"); // Cambia el valor aquí
+
+  useEffect(() => {
+    socket.on("sensor:data", (data) => {
+      setSensorData(data);
+    });
+    return () => {
+      socket.off();
+    };
+  }, []);
+
+  const sendExperimentCode = () => {
+    socket.emit("experiment:code", experimentCode);
+  };
+
+  return (
+    <div>
+      <div>Experimento 1 de física mecánica</div>
+      <div>
+      <button onClick={sendExperimentCode}>Iniciar Transmisión</button>
+        <button>Pausar Transmisión</button>
+      </div>
+    </div>
+  );
+};
 
 export default Mechanical1;
