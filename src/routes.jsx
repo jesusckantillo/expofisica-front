@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from './layouts/Layout';
 
-import HomePage from './pages/homePage';
-import Mechanical1 from './pages/mechanicalPhysics/mechanical1';
+import HomePage from "./pages/HomePage";
+import Mechanical1 from './pages/mechanicalPhysics/Mechanical1';
 import Mechanical2 from "./pages/mechanicalPhysics/Mechanical2";
-import Electricity1 from "./pages/electricityPhysics/electricity1";
+import Electricity1 from "./pages/electricityPhysics/Electricity1";
 import Electricity2 from "./pages/electricityPhysics/Electricity2";
-import HeatWave1 from "./pages/heatWavePhysics/heatWave1";
-import HeatWave2 from "./pages/heatWavePhysics/heatWave2";
+import HeatWave1 from "./pages/heatWavePhysics/HeatWave1";
+import HeatWave2 from "./pages/heatWavePhysics/HeatWave2";
 
 const Paths = () => {
     return (
