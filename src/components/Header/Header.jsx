@@ -1,11 +1,15 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Container, Heading, Divider } from "@chakra-ui/react";
+import ButtonGroup from "./ButtonGroup";
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
-    <Box bg={"yellow.100"} h="80px">
-      <header>Header</header>
-    </Box>
+    <Container maxW="x1" display="flex" justifyContent="space-between" alignItems="center" py={4}>
+      <Heading as="h1" size="lg">
+        {title}
+      </Heading>
+     <ButtonGroup />
+    </Container>
   );
 };
 

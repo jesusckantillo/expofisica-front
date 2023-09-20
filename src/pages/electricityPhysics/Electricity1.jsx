@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-const Electricity1 = () => {
-  
+import { Box, SimpleGrid, Container,Divider } from "@chakra-ui/react";
+import Template from "../../components/ExpTemplate/PlotsContainer";
+import Header from "../../components/Header/Header";
 
-
-
-
+ const Electricity1 = () => {
+    const props = {
+        name : "Radio de Elkin",   
+    }
     return (
-        <div>
-        <div>Experimento 1 de fisica mecanica</div>
-        <div>
-        <button>Iniciar Transmisión</button>
-        <button>Pausar Transmisión</button>
-      </div>
-        </div>
-    )
+        <Container maxW="100%" centerContent={false}>
+            <Header title={props.name} />
+            <Divider orientation='horizontal' />
+            <Template />
+        </Container>
+    );
 }
 
 export default Electricity1;

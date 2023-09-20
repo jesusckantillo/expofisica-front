@@ -6,17 +6,7 @@ import { Grid, Box } from "@chakra-ui/react";
 const Layout = () => {
   return (
     <Grid minH="100vh" templateColumns="250px 1fr" gap={4} bg="white">
-      <Box
-        position="fixed"
-        left={0}
-        top={0}
-        h="100vh"
-        w="280px"
-        zIndex={1}
-        bg="blue.300"
-      >
         <Sidebar />
-      </Box>
       <Grid gridColumn="2 / 4" p={4}>
         <Outlet />
       </Grid>
