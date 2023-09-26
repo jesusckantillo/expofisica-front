@@ -9,6 +9,12 @@ const Header = ({ title }) => {
       <Heading as="h1" size="lg">
         {title}
       </Heading>
+      <ButtonGroup>
+        
+
+
+      </ButtonGroup>
+
     </Container>
   );
 };

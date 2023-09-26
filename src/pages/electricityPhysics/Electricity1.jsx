@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 
  const Electricity1 = () => {
     const props = {
-        name : "Radio electromagnetica",   
+        name : "Movimiento rectilineo",   
     }
     return (
         <Container maxW="100%" centerContent={false}>

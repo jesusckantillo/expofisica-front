@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Chart as ChartJS,
-  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -12,7 +11,6 @@ import {
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 ChartJS.register(
-  CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -21,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-export const plotOptions= {
+export const plotOptions = {
   responsive: true,
   plugins: {
     legend: {
@@ -34,22 +32,16 @@ export const plotOptions= {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const timeData = ['0s', '1s', '2s', '3s', '4s', '5s', '6s']; // Cambia las etiquetas a tiempo en segundos
 
 export const plotData = {
-  labels,
+  labels: timeData, // Usa las etiquetas de tiempo en lugar de meses
   datasets: [
     {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      label: 'Posición vs Tiempo', // Cambia el nombre del conjunto de datos
+      data: timeData.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
 };
