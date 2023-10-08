@@ -5,10 +5,10 @@ import socket from "../../socket.js";
 const ButtonGroup = () => {
   const handleFindArduinoClick = () => {
     // Emit the 'findArduino' event to the server
-    socket.emit("findArduino");
+    socket.emit("checkConn", 'MRUA');
 
     // Listen for the 'arduinoFound' event from the server
-    socket.on("findArduino", (data) => {
+    socket.on("checkConn", (data) => {
       alert(data.message);
     });
   };
