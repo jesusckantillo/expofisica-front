@@ -8,7 +8,7 @@ const ButtonGroup = () => {
     socket.emit("checkConn", 'MRUA');
 
     // Listen for the 'arduinoFound' event from the server
-    socket.on("checkConn", (data) => {
+    socket.once("checkConn", (data) => {
       alert(data.message);
     });
   };
