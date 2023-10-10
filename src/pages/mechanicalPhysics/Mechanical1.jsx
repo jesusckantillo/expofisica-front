@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import socket from "../../socket";
+import SimulationMRUA from "./Animation/SimulationMRUA";
 
 const Mechanical1 = () => {
   const [sensorData, setSensorData] = useState({});
@@ -25,6 +26,7 @@ const Mechanical1 = () => {
       <button onClick={sendExperimentCode}>Iniciar Transmisión</button>
         <button>Pausar Transmisión</button>
       </div>
+      < SimulationMRUA />
     </div>
   );
 };
