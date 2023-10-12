@@ -1,15 +1,17 @@
 import React from "react";
+import SimulationFreeFall from "./Animation/SimulationFreeFall";
 
 const Mechanical2 = () => {
-    return (
-        <div>
-        <div>Experimento 1 de fisica mecanica</div>
-        <div>
+  return (
+    <div>
+      <div>Experimento 1 de fisica mecanica</div>
+      <div>
         <button>Iniciar Transmisión</button>
         <button>Pausar Transmisión</button>
       </div>
-        </div>
-    )
-}
+      < SimulationFreeFall />
+    </div>
+  );
+};
 
 export default Mechanical2;
