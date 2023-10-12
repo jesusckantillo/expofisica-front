@@ -13,13 +13,27 @@ const ButtonGroup = () => {
     });
   };
 
+  const dataListener = data => {
+      console.log(data);
+  }
+  const startData = () => {
+      socket.emit("startExperiment", true, 'expData');
+
+      socket.on('expData', dataListener);
+  }
+
+  const pauseData = () => {
+        socket.emit("startExperiment", false, 'expData');
+        socket.off('expData', dataListener);
+  }
+
   return (
     <Stack direction="row" spacing={4}>
       <Button colorScheme="teal" onClick={handleFindArduinoClick}>
         Verificar conexión
       </Button>
-      <Button colorScheme="teal">Iniciar gráfica</Button>
-      <Button colorScheme="teal">Descargar Datos</Button>
+      <Button colorScheme="teal" onClick={startData}>Iniciar gráfica</Button>
+      <Button colorScheme="teal" onClick={pauseData}>Descargar Datos</Button>
     </Stack>
   );
 };
