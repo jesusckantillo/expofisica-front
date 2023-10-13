@@ -40,7 +40,7 @@ export default function Overview() {
         <TotalSpent />
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
-        <Information title = 'Experimento' value = 'As we live, our hearts turn colder.'/>
+        <Information title = 'Experimento' value = 'Este es la información base del experimento de arriba'/>
       </SimpleGrid>
     </Box>
   );
