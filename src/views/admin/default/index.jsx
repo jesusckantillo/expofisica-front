@@ -5,7 +5,7 @@ import { Box, SimpleGrid, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 
-import Information from "../profile/components/Information";
+import Information from "../electricity/components/Information";
 
 import { experience1 } from "variables/information";
 

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Box, Grid, SimpleGrid } from "@chakra-ui/react";
 
 // Custom components
-import General from "views/admin/profile/components/General";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import Information from "./components/Information";
 import { Button, Icon } from '@chakra-ui/react'

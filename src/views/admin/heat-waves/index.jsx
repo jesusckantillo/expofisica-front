@@ -3,7 +3,7 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 
 import React from "react";
 import TotalSpent from "../default/components/TotalSpent";
-import Information from "../profile/components/Information";
+import Information from "../electricity/components/Information";
 import { experience1 } from "variables/information";
 
 export default function Settings() {

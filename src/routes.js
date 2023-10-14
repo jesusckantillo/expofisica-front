@@ -31,23 +31,23 @@ import { MdElectricBolt } from "react-icons/md";
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
-import NFTMarketplace from "views/admin/marketplace";
-import Profile from "views/admin/profile";
-import DataTables from "views/admin/dataTables";
+import Mechanics from "views/admin/mechanics/index";
+import Electricity from "views/admin/electricity/index";
+import HeatAndWaves from "views/admin/heat-waves/index";
 
 
 const routes = [
   {
     name: "Inicio",
     layout: "/admin",
-    path: "/default",
+    path: "/main-dashboard",
     icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
     component: MainDashboard,
   },
   {
     name: "Fisica Mecanica",
     layout: "/admin",
-    path: "/nft-marketplace",
+    path: "/mechanics",
     icon: (
       <Icon
         as={MdOutlineShoppingCart}
@@ -56,22 +56,22 @@ const routes = [
         color='inherit'
       />
     ),
-    component: NFTMarketplace,
+    component: Mechanics,
     secondary: true,
   },
   {
     name: "Fisica Calor Ondas",
     layout: "/admin",
     icon: <Icon as={BsFire} width='20px' height='20px' color='inherit' />,
-    path: "/data-tables",
-    component: DataTables,
+    path: "/heat-waves",
+    component: HeatAndWaves,
   },
   {
     name: "Fisica electricidad",
     layout: "/admin",
-    path: "/profile",
+    path: "/electricity",
     icon: <Icon as={MdElectricBolt} width='20px' height='20px' color='inherit' />,
-    component: Profile,
+    component: Electricity,
   }
 ];
 
