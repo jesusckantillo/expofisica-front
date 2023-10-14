@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Matter from "matter-js";
-import { Button, Select, Flex, Text } from "@chakra-ui/react";
+import { Button, Select, Flex, Text, Box } from "@chakra-ui/react";
 
 const SimulationFreeFall = () => {
   const [reset, setReset] = useState(false);
@@ -80,25 +80,32 @@ const SimulationFreeFall = () => {
 
   return (
     <Flex flexDirection="row">
-      <div id="myCanvas"></div>
+      <Box id="myCanvas" style={{ marginRight: '20px' }}></Box>
       <Flex flexDirection="column">
         <Text marginBottom="5px">Gravedad Figura 1</Text>
         <Select
           value={airFrictionBoxA}
           onChange={(e) => setAirFrictionBoxA(Number(e.target.value))}
           width="150px"
+          marginBottom="10px"
         >
           <option value="0">Tierra</option>
           <option value="0.1657">Luna</option>
+          <option value="0.1">Marte</option>
+          <option value="0.05">Urano</option>
+
         </Select>
         <Text marginBottom="5px">Gravedad Figura 2</Text>
         <Select
           value={airFrictionBoxB}
           onChange={(e) => setAirFrictionBoxB(Number(e.target.value))}
           width="150px"
+          marginBottom="20px"
         >
           <option value="0">Tierra</option>
           <option value="0.1657">Luna</option>
+          <option value="0.1">Marte</option>
+          <option value="0.05">Urano</option>
         </Select>
         <Button
           colorScheme="teal"
