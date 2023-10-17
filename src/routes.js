@@ -23,6 +23,8 @@ import {
   MdOutlineShoppingCart,
 } from "react-icons/md";
 
+import { FaWeightHanging } from "react-icons/fa";
+
 import { BsFire } from "react-icons/bs";
 
 
@@ -50,7 +52,7 @@ const routes = [
     path: "/mechanics",
     icon: (
       <Icon
-        as={MdOutlineShoppingCart}
+        as={FaWeightHanging}
         width='20px'
         height='20px'
         color='inherit'
