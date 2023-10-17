@@ -1,5 +1,6 @@
 // Chakra imports
 import { Box, Button, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 // Custom components
 import React from "react";
@@ -17,9 +18,11 @@ export default function UserReports() {
         <Text fontSize="xl" mb="20px">
           Bienvenido a la aplicación de monitoreo de tus experimentos favoritos
         </Text>
-        <Button colorScheme="blue" size="lg">
-          Comenzar
-        </Button>
+        <Link to="/admin/mechanics">
+          <Button colorScheme="blue" size="lg">
+            Comenzar
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
