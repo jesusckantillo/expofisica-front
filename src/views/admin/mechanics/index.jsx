@@ -12,6 +12,8 @@ import {
   useColorModeValue,
   SimpleGrid,
 } from "@chakra-ui/react";
+import Information from "../electricity/components/Information";
+import { experience1 } from "variables/information";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 
@@ -39,8 +41,12 @@ export default function Marketplace() {
           </Button>
         </SimpleGrid>
       </div>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="10px" mb="20px">
         <TotalSpent />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
+        <Information title = 'Una zona para mostrar valores relevantes del experimento' value = "I can see the future, it's lookin like we level through the sky"/>
+        <Information  title = 'Experimento' value = 'I can see the future, I can see the future' />
       </SimpleGrid>
     </Box>
   );
