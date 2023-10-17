@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Matter from "matter-js";
 import { Box, Button, Input, Flex, Text } from "@chakra-ui/react";
 
 const SimulationMRUA = () => {
   const [reset, setReset] = useState(false);
   const [angle, setAngle] = useState(45);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [isApplied, setIsApplied] = useState(false);
+  const myCanvasRef = useRef(null);
 
   const calculateRampVertices = (angle) => {
-    // Calcula los puntos superior e inferior derecho de la rampa
-    const hypotenuse = 400; // Longitud constante de la hipotenusa
+    const hypotenuse = 400;
     const opposite = hypotenuse * Math.sin((angle * Math.PI) / 180);
     const adjacent = hypotenuse * Math.cos((angle * Math.PI) / 180);
 
     const rampVertices = [
-      { x: 0, y: 500 }, // Punto inferior izquierdo
-      { x: 0, y: 500 - opposite }, // Punto superior izquierdo
-      { x: adjacent, y: 500 }, // Punto inferior derecho
+      { x: 0, y: 500 },
+      { x: 0, y: 500 - opposite },
+      { x: adjacent, y: 500 },
     ];
 
-    console.log(rampVertices[2].x / 2)
-    console.log(rampVertices[2].x)
     return rampVertices;
   };
 
   const calculateCirclePosition = (rampVertices) => {
-    // Calcula la posición y del círculo en función de la rampa
-    const circleY = rampVertices[1].y + 20; // Ajusta el valor en función de la posición del círculo
-
+    const circleY = rampVertices[1].y + 20;
     return circleY;
   };
 
@@ -72,11 +72,31 @@ const SimulationMRUA = () => {
     var groundLeft = Bodies.rectangle(0, 300, 50, 600, groundOptions);
 
     const rampX = rampVertices[2].x;
-    const rampY = rampVertices[2].y; 
+    const rampY = rampVertices[2].y;
 
-    const ramp = Bodies.fromVertices(rampX/2 - 50, rampY, [rampVertices], {
+    const ramp = Bodies.fromVertices(rampX / 2 - 50, rampY, [rampVertices], {
       isStatic: false,
     });
+
+    let collisionDetected = false;
+
+    const collisionStartHandler = (event) => {
+      const pairs = event.pairs;
+      if (collisionDetected == false) {
+        for (let i = 0; i < pairs.length; i++) {
+          const pair = pairs[i];
+          if (
+            (pair.bodyA === boxA && pair.bodyB === groundBottom) ||
+            (pair.bodyA === groundBottom && pair.bodyB === boxA)
+          ) {
+            stopTimer();
+            collisionDetected = true;
+          }
+        }
+      }
+    };
+
+    Matter.Events.on(engine, "collisionStart", collisionStartHandler);
 
     Composite.add(engine.world, [
       boxA,
@@ -95,38 +115,76 @@ const SimulationMRUA = () => {
 
   useEffect(() => {
     if (!window.myMatterStarted || reset) {
-      document.getElementById("myCanvas").innerHTML = "";
-      startMatter();
-      window.myMatterStarted = true;
-      setReset(false);
+      if (myCanvasRef.current) {
+        myCanvasRef.current.innerHTML = "";
+        startMatter();
+        window.myMatterStarted = true;
+        setReset(false);
+      }
     }
-  }, [reset, angle]);
+  }, [reset, angle, myCanvasRef]);
+
+  const startTimer = () => {
+    setStartTime(Date.now());
+    setTimerRunning(true);
+  };
+
+  const stopTimer = () => {
+    setElapsedTime(Date.now() - startTime + elapsedTime);
+    setTimerRunning(false);
+  };
+
+  const handleStartButtonClick = () => {
+    if (angle >= 10 && angle <= 75) {
+      setElapsedTime(0);
+      if (!timerRunning) {
+        startTimer();
+      } else {
+        stopTimer();
+      }
+      setReset(true);
+    } else {
+      alert("El ángulo debe estar entre 10 y 75 grados");
+    }
+  };
 
   return (
-    <Flex flexDirection="row">
-      <Box id="myCanvas" style={{ marginRight: "20px" }}></Box>
-      <Flex flexDirection="column">
-        <Text marginBottom="5px">Ajusta el angulo</Text>
-        <Input
-          type="number"
-          value={angle === 0 ? '' : angle}
-          onChange={(e) => setAngle(Number(e.target.value))}
-          marginBottom="20px"
-        />
-      <Button
-        colorScheme="teal"
-        onClick={() => {
-          if (angle >= 10 && angle <= 75) {
-            setReset(true);
-          } else {
-            alert("El ángulo debe estar entre 10 y 75 grados");
-          }
-        }}
-      >
-        Aplicar
-      </Button>
+    <Box>
+      <Text marginBottom="5px">SIMULACION</Text>
+      <Flex flexDirection="row">
+        {isApplied && (
+          <Box
+            ref={myCanvasRef}
+            id="myCanvas"
+            style={{ marginRight: "20px" }}
+          ></Box>
+        )}
+        <Flex flexDirection="column">
+          <Text marginBottom="5px">Ajusta el angulo</Text>
+          <Input
+            type="number"
+            value={angle === 0 ? "" : angle}
+            onChange={(e) => setAngle(Number(e.target.value))}
+            marginBottom="20px"
+          />
+          <Button
+            colorScheme="teal"
+            onClick={() => {
+              handleStartButtonClick();
+              setIsApplied(true);
+            }}
+            marginBottom="20px"
+          >
+            Aplicar
+          </Button>
+          {isApplied && (
+            <Text marginBottom="5px">
+              Tiempo transcurrido: {elapsedTime / 1000} segundos
+            </Text>
+          )}
+        </Flex>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 
