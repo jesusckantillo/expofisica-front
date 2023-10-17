@@ -254,11 +254,11 @@ export const pieChartData = [63, 25, 12];
 export const lineChartDataTotalSpent = [
   {
     name: "Y(x, t)",
-    data: [10, 20, 30, 40, 50, 60],
+    data: [50, 50, 50, 50, 20, 10],
   },
   {
     name: "B(x, t)",
-    data: [30, 40, 24, 46, 20, 46],
+    data: [100, 0, -100, 0, 100, 0],
   },
 ];
 
