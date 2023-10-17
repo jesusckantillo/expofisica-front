@@ -1,13 +1,8 @@
 // Chakra imports
-import { Box, SimpleGrid, useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 // Custom components
 import React from "react";
-import TotalSpent from "views/admin/default/components/TotalSpent";
-
-import Information from "../electricity/components/Information";
-
-import { experience1 } from "variables/information";
 
 export default function UserReports() {
   // Chakra Color Mode
@@ -15,15 +10,17 @@ export default function UserReports() {
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 1 }} gap="10px" mb="20px">
-        <TotalSpent />
-      </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
-        {experience1.map((item, index) => (
-          <Information key={index} title={item.title} value={item.text} />
-        ))}
-        <Information />
-      </SimpleGrid>
+      <Box textAlign="center" mb="20px">
+        <Heading as="h1" size="2xl" mb="10px">
+          Bienvenido a la aplicación
+        </Heading>
+        <Text fontSize="xl" mb="20px">
+          Bienvenido a la aplicación de monitoreo de tus experimentos favoritos
+        </Text>
+        <Button colorScheme="blue" size="lg">
+          Comenzar
+        </Button>
+      </Box>
     </Box>
   );
 }
