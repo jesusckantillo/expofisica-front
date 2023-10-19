@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import socket from "../../socket";
-import SimulationMRUA from "./Animation/SimulationMRUA";
+import SimulationMRUA from "./Animation/Animation/SimulationMRUA";
 
 const Mechanical1 = () => {
   const [sensorData, setSensorData] = useState({});

@@ -1,5 +1,5 @@
 import React from "react";
-import SimulationFreeFall from "./Animation/SimulationFreeFall";
+import SimulationFreeFall from "./Animation/Animation/SimulationFreeFall";
 
 const Mechanical2 = () => {
   return (

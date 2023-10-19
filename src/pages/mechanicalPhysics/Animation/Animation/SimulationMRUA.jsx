@@ -55,14 +55,14 @@ const SimulationMRUA = () => {
     var boxA = Bodies.circle(40, circleY, 20, {
       isStatic: false,
       render: {
-        fillStyle: "white",
+        fillStyle: "gray",
       },
     });
 
     var groundOptions = {
       isStatic: true,
       render: {
-        fillStyle: "gray",
+        fillStyle: "white",
       },
     };
 
@@ -140,7 +140,7 @@ const SimulationMRUA = () => {
       if (!timerRunning) {
         startTimer();
       } else {
-        stopTimer();
+        stopTimer();  
       }
       setReset(true);
     } else {
@@ -149,16 +149,9 @@ const SimulationMRUA = () => {
   };
 
   return (
-    <Box>
-      <Text marginBottom="5px">SIMULACION</Text>
-      <Flex flexDirection="row">
-        {isApplied && (
-          <Box
-            ref={myCanvasRef}
-            id="myCanvas"
-            style={{ marginRight: "20px" }}
-          ></Box>
-        )}
+    <Flex flexDirection="row">
+      <Box p='4'>
+        <Text fontSize='3xl' color='teal' as='samp'>SIMULACION</Text>
         <Flex flexDirection="column">
           <Text marginBottom="5px">Ajusta el angulo</Text>
           <Input
@@ -183,8 +176,15 @@ const SimulationMRUA = () => {
             </Text>
           )}
         </Flex>
-      </Flex>
-    </Box>
+      </Box>
+      {isApplied && (
+        <Box
+          ref={myCanvasRef}
+          id="myCanvas"
+          style={{ marginRight: "20px" }}
+        ></Box>
+      )}
+    </Flex>
   );
 };
 
