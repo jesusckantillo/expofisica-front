@@ -59,7 +59,23 @@ const routes = [
       />
     ),
     component: Mechanics,
-    secondary: true,
+    items: [
+      {
+        name: "Mecanica Cinematica",
+        path: "/mechanics-1",
+        component: Electricity,
+      },
+      {
+        name: "Mecanica Dinamica",
+        path: "/mechanics-2",
+        component: Electricity,
+      },
+    ],
+  },
+  {
+    name: "Mecanica 2",
+    path: "/admin/mechanics/mechanics-2",
+    component: Electricity,
   },
   {
     name: "Fisica Calor Ondas",
