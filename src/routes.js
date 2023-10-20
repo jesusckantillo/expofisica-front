@@ -36,6 +36,7 @@ import MainDashboard from "views/admin/default";
 import Mechanics from "views/admin/mechanics/index";
 import Electricity from "views/admin/electricity/index";
 import HeatAndWaves from "views/admin/heat-waves/index";
+import ChartTests from "views/admin/chartsTest/index";
 
 
 const routes = [
@@ -90,6 +91,13 @@ const routes = [
     path: "/electricity",
     icon: <Icon as={MdElectricBolt} width='20px' height='20px' color='inherit' />,
     component: Electricity,
+  },
+  {
+    name: "Agregar Gráficas aquí",
+    layout: "/admin",
+    path: "/charts",
+    icon: <Icon as={MdBarChart} width='20px' height='20px' color='inherit' />,
+    component: ChartTests,
   }
 ];
 
