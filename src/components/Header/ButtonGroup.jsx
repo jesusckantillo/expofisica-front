@@ -1,39 +1,45 @@
 import React, { useEffect } from "react";
 import { Button, Stack } from "@chakra-ui/react";
-import socket from "../../socket.js";
+import io from "socket.io-client";
 
 const ButtonGroup = () => {
-  const handleFindArduinoClick = () => {
-    // Emit the 'findArduino' event to the server
-    socket.emit("checkConn", 'MRUA');
+  const socket = io('http://localhost:3000', { transports: ['websocket'] });
 
-    // Listen for the 'arduinoFound' event from the server
-    socket.once("checkConn", (data) => {
-      alert(data.message);
+  const handleFindArduinoClick = () => {
+    console.log("me cago en tus muertos")
+    socket.on('connect', () => {
+      console.log('Connected to server');
     });
+    socket.on('connect_error', (error) => {
+      console.error('Connection error:', error);
+    });
+    
+
+
+
+    socket.emit('findArduino');
   };
 
-  const dataListener = data => {
-      console.log(data);
-  }
-  const startData = () => {
-      socket.emit("startExperiment", true, 'expData');
+  useEffect(() => {
+    // Listen for the 'findArduino' event response from the server
+    socket.on('findArduino', (res) => {
+      // Log the server response to the browser console
+      console.log(res.message); // Assuming the response contains a 'message' property
+    });
 
-      socket.on('expData', dataListener);
-  }
-
-  const pauseData = () => {
-        socket.emit("startExperiment", false, 'expData');
-        socket.off('expData', dataListener);
-  }
+    // Clean up the event listener when the component unmounts
+    return () => {
+      socket.off('findArduino');
+    };
+  }, []);
 
   return (
     <Stack direction="row" spacing={4}>
       <Button colorScheme="teal" onClick={handleFindArduinoClick}>
         Verificar conexión
       </Button>
-      <Button colorScheme="teal" onClick={startData}>Iniciar gráfica</Button>
-      <Button colorScheme="teal" onClick={pauseData}>Descargar Datos</Button>
+      <Button colorScheme="teal">Iniciar gráfica</Button>
+      <Button colorScheme="teal">Descargar Datos</Button>
     </Stack>
   );
 };
