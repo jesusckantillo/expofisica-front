@@ -27,7 +27,6 @@ const SimulationFreeFall = () => {
       },
     });
 
-
     var boxB = Bodies.circle(500, 200, 20, {
       isStatic: false,
       frictionAir: airFrictionBoxB,
@@ -85,10 +84,11 @@ const SimulationFreeFall = () => {
 
   return (
     <Flex flexDirection="row">
-        <Box p='4'>
-          <Text fontSize='3xl' color='teal' as='samp'>SIMULACION</Text>
-          <Flex flexDirection="column">
-
+      <Box p="4">
+        <Text fontSize="3xl" color="teal" as="samp">
+          SIMULACION
+        </Text>
+        <Flex flexDirection="column">
           <Text marginBottom="5px">Gravedad Figura 1</Text>
           <Select
             value={airFrictionBoxA}
@@ -123,8 +123,17 @@ const SimulationFreeFall = () => {
           >
             Aplicar
           </Button>
-          </Flex>
-        </Box>
+        </Flex>
+      </Box>
+      {!isApplied && (
+        <Box
+          style={{
+            width: "800px",
+            height: "600px",
+            backgroundColor: "lightgray", // Color de fondo
+          }}
+        ></Box>
+      )}
       {isApplied && (
         <Box
           ref={myCanvasRef}
