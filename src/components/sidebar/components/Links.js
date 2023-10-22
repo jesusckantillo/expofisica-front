@@ -9,6 +9,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import VariantStyles from "components/sidebar/components/VariantStyles.css";
 
 export function SidebarLinks(props) {
   const location = useLocation();
@@ -27,7 +28,7 @@ export function SidebarLinks(props) {
   const createLinks = (routes, parentRoute = "/admin") => {
     return routes.map((route, index) => {
       const fullRoutePath = parentRoute + route.path;
-  
+
       if (route.category) {
         return (
           <div key={index}>
@@ -51,17 +52,19 @@ export function SidebarLinks(props) {
       } else if (route.layout === "/admin" || route.layout === "/auth" || route.layout === "/rtl") {
         if (route.collapse) {
           const isCollapsed = collapsedRoutes[fullRoutePath] || false;
-  
+
           return (
             <div key={index}>
               <div
                 onClick={() => handleCollapseToggle(fullRoutePath)}
                 style={{ cursor: "pointer" }}
+                className={`collapse-toggle ${isCollapsed ? "collapsed" : ""}`}
               >
                 <HStack
                   spacing={isCollapsed ? "22px" : "26px"}
                   py="5px"
                   ps="10px"
+                  className={`hstack-container ${isRouteActive(fullRoutePath) ? "active" : ""}`}
                 >
                   <Flex w="100%" alignItems="center" justifyContent="center">
                     <Box color={isCollapsed ? activeIcon : textColor} me="18px">
@@ -80,6 +83,7 @@ export function SidebarLinks(props) {
                     w="4px"
                     bg={isCollapsed ? brandColor : "transparent"}
                     borderRadius="5px"
+                    className={`bg-box ${isRouteActive(fullRoutePath) ? "active" : ""}`}
                   />
                 </HStack>
               </div>
@@ -90,6 +94,10 @@ export function SidebarLinks(props) {
                       spacing={isRouteActive(fullRoutePath + subRoute.path) ? "22px" : "26px"}
                       py="5px"
                       ps="10px"
+                      marginLeft={"25px"}
+                      borderRadius={isRouteActive(fullRoutePath + subRoute.path) ? "10px" : "0px"}
+                      background={isRouteActive(fullRoutePath + subRoute.path) ? "#e2e8f0" : ""}
+                      className={`hstack-container ${isRouteActive(fullRoutePath + subRoute.path) ? "active" : ""}`}
                     >
                       <Flex w="100%" alignItems="center" justifyContent="center">
                         <Box color={isRouteActive(fullRoutePath + subRoute.path) ? activeIcon : textColor} me="18px">
@@ -108,6 +116,7 @@ export function SidebarLinks(props) {
                         w="4px"
                         bg={isRouteActive(fullRoutePath + subRoute.path) ? brandColor : "transparent"}
                         borderRadius="5px"
+                        className={`bg-box ${isRouteActive(fullRoutePath + subRoute.path) ? "active" : ""}`}
                       />
                     </HStack>
                   </NavLink>
@@ -122,6 +131,7 @@ export function SidebarLinks(props) {
                 spacing={isRouteActive(fullRoutePath) ? "22px" : "26px"}
                 py="5px"
                 ps="10px"
+                className={`hstack-container ${isRouteActive(fullRoutePath) ? "active" : ""}`}
               >
                 <Flex w="100%" alignItems="center" justifyContent="center">
                   <Box color={isRouteActive(fullRoutePath) ? activeIcon : textColor} me="18px">
@@ -140,6 +150,7 @@ export function SidebarLinks(props) {
                   w="4px"
                   bg={isRouteActive(fullRoutePath) ? brandColor : "transparent"}
                   borderRadius="5px"
+                  className={`bg-box ${isRouteActive(fullRoutePath) ? "active" : ""}`}
                 />
               </HStack>
             </NavLink>

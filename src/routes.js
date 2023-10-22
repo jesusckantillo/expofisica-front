@@ -20,16 +20,17 @@ import { MdHome } from "react-icons/md";
 import { GiFallDown } from "react-icons/gi";
 
 import { FaWeightHanging } from "react-icons/fa";
+import { FaPersonRunning } from "react-icons/fa6";
 
 import { BsFire, BsSoundwave, BsThermometerHalf } from "react-icons/bs";
 import { MdElectricBolt } from "react-icons/md";
-import { SiAcclaim } from "react-icons/si";
 import { GiMagnet } from "react-icons/gi";
 import { IoMagnetOutline } from "react-icons/io5";
 
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
+import Mechanics from "views/admin/mechanics/index";
 import Mechanics1 from "views/admin/mechanics1/index";
 import Mechanics2 from "views/admin/mechanics2/index";
 import Electricity from "views/admin/electricity/index";
@@ -67,7 +68,7 @@ const routes = [
         color='inherit'
       />
     ),
-    component: ChartTests, 
+    component: Mechanics, 
     collapse: true,
     items: [
       {
@@ -80,7 +81,7 @@ const routes = [
         name: "MRU",
         path: "/mechanics-2", 
         component: Mechanics2,
-        icon: <Icon as={SiAcclaim} width='20px' height='20px' color='inherit' />,  
+        icon: <Icon as={FaPersonRunning} width='20px' height='20px' color='inherit' />,  
       },
     ],
   },

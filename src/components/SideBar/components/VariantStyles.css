@@ -1,0 +1,18 @@
+.collapse-toggle {
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  
+  .collapse-toggle.collapsed .hstack-container .bg-box {
+    background: #422afb;
+    backdrop-filter: blur(10px);
+  }
+  
+  .hstack-container.active .bg-box {
+    background: #E2E8F0;
+  }
+  
+  .hstack-container .bg-box {
+    transition: all 0.3s;
+  }
+  
