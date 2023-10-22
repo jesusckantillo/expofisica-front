@@ -11,7 +11,7 @@ import { Button, Icon } from '@chakra-ui/react'
 // Assets
 import React from "react";
 
-export default function Electricity1() {
+export default function Electricity2() {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
