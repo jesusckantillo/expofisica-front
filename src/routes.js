@@ -96,12 +96,14 @@ const routes = [
     collapse: true,
     items: [
       {
+        layout: "/admin",
         name: "Tubo de Kundt",
         path: "/heat-waves-1",
         component: HeatAndWaves1,
         icon: <Icon as={BsSoundwave} width='20px' height='20px' color='inherit' />, 
       },
       {
+        layout: "/admin",
         name: "Térmometro",
         path: "/heat-waves-2", 
         component: HeatAndWaves2,
@@ -118,12 +120,14 @@ const routes = [
     collapse: true,
     items: [
       {
+        layout: "/admin",
         name: "Detector de metales",
         path: "/electricity-1",
         component: Electricity1,
         icon: <Icon as={GiMagnet} width='20px' height='20px' color='inherit' />, 
       },
       {
+        layout: "/admin",
         name: "Campo magnético",
         path: "/electricity-2", 
         component: Electricity2,
