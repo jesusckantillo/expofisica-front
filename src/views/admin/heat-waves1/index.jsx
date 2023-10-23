@@ -7,6 +7,7 @@ import { Box, Grid, SimpleGrid } from "@chakra-ui/react";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import Information from "../electricity/components/Information";
 import { Button, Icon } from '@chakra-ui/react'
+import kundtGIF from 'components/icons/kundtGif.jpg'
 
 // Assets
 import React from "react";
@@ -39,8 +40,10 @@ export default function HeatAndWaves1() {
       <SimpleGrid columns={{ base: 1, md: 2, xl: 1 }} gap='20px' mb='20px'>
         <TotalSpent />
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
-        <Information title = 'Experimento' value = 'Este es la información base del experimento de arriba'/>
+      <SimpleGrid display={'flex'} columns={{ base: 1, md: 2, xl: 3 }} gap='20px' mb='20px'>
+        <Information title = '¿Qué es el Tubo de Kundt?' value = 'El tubo de Kundt es un dispositivo que permite reconocer la posición de nodos y vientres de ondas estacionarias, gracias a los diferentes patrones que forman en polvo de corcho presente en el interior de un tubo. El sonido se produce con un altavoz conectado a un generador de señales.'/>
+        <img style={{height: '300px', borderRadius: '20px'}} src={kundtGIF}/>
+        <Information w='800px' title = '¿Qué es una onda estacionaria?' value = 'Una onda estacionaria es el patrón de vibración que se produce cuando dos ondas de la misma frecuencia y amplitud, viajan en direcciones opuestas, interfieren entre sí y se superponen. Las ondas estacionarias se producen en medios elásticos, como cuerdas, membranas y columnas de aire.'/>
       </SimpleGrid>
     </Box>
   );

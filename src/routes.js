@@ -57,7 +57,7 @@ const routes = [
     component: MainDashboard,
   },
   {
-    name: "Fisica Mecanica",
+    name: "Física Mecánica",
     layout: "/admin",
     path: "/mechanics",
     icon: (
@@ -80,7 +80,7 @@ const routes = [
       },
       {
         layout: "/admin",
-        name: "MRU",
+        name: "MRUA",
         path: "/mechanics-2", 
         component: Mechanics2,
         icon: <Icon as={FaPersonRunning} width='20px' height='20px' color='inherit' />,  
@@ -88,7 +88,7 @@ const routes = [
     ],
   },
   {
-    name: "Fisica calor y ondas",
+    name: "Física Calor y Ondas",
     layout: "/admin",
     icon: <Icon as={BsFire} width='20px' height='20px' color='inherit' />,
     path: "/heat-waves",
@@ -104,7 +104,7 @@ const routes = [
       },
       {
         layout: "/admin",
-        name: "Térmometro",
+        name: "Termómetro",
         path: "/heat-waves-2", 
         component: HeatAndWaves2,
         icon: <Icon as={BsThermometerHalf} width='20px' height='20px' color='inherit' />,  
@@ -112,7 +112,7 @@ const routes = [
     ],
   },
   {
-    name: "Fisica electricidad",
+    name: "Física Electricidad",
     layout: "/admin",
     path: "/electricity",
     icon: <Icon as={MdElectricBolt} width='20px' height='20px' color='inherit' />,

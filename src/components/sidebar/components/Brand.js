@@ -15,7 +15,7 @@ export function SidebarBrand() {
   return (
     <Flex align='center' direction='column'>
       <div style={{borderRadius: '20px', width: '100px', marginBottom: '10px'}}>
-        <img style={{borderRadius: '20px', boxShadow: '0px 0px 10px #ccc'}} src={SIRIUS}></img>
+        <img style={{borderRadius: '20px'}} src={SIRIUS}></img>
       </div>
       <HSeparator mb='20px' />
     </Flex>
