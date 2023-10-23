@@ -15,4 +15,10 @@
   .hstack-container .bg-box {
     transition: all 0.3s;
   }
+
+  .sidebar-link:hover {
+    background-color: #E2E8F0; 
+    color: #333; 
+  }
+  
   

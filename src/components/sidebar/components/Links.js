@@ -163,6 +163,7 @@ export function SidebarLinks(props) {
   const [collapsedRoutes, setCollapsedRoutes] = useState({});
 
   const handleCollapseToggle = (routeName) => {
+    console.log(routeName);
     setCollapsedRoutes((prevCollapsedRoutes) => ({
       ...prevCollapsedRoutes,
       [routeName]: !prevCollapsedRoutes[routeName],
