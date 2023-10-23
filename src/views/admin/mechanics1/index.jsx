@@ -1,15 +1,15 @@
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 // Chakra imports
 import {
   Box,
   Button,
-  Flex,
-  Grid,
+  Stack,
   Link,
-  Text,
+  Center,
   useColorModeValue,
   SimpleGrid,
 } from "@chakra-ui/react";
@@ -17,12 +17,13 @@ import { ConfigProvider, Table } from "antd";
 import Information from "../electricity/components/Information";
 import { experience1 } from "variables/information";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { portControl } from "../../../utils/arduinocontroller";
+import LinePlot from "../../../plots/lineplot";
+import SimulationFreeFall from "animations/SimulationFreeFall";
 
 
-import TotalSpent from "../default/components/TotalSpent";
-import { Components } from "antd/es/date-picker/generatePicker";
 
-export default function Mechanics1() {
+export default function Mechanics({loading, setLoading}) {
 
   const tableStyles = {
     border: '1px solid #e8e8e8',
@@ -68,12 +69,35 @@ export default function Mechanics1() {
     },
   ];
 
+  //States for visual stuff
   const [isVerified, setIsVerified] = React.useState(false);
   const [experimentFinished, setExperimentFinished] = React.useState(false);
+  const [experimentRunning, setExperimentRunning] = useState(false);
+
+  
+
+  //States for data
   const [data, setData] = useState([]);
-  // Chakra Color Mode
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
+
+  //Handle functions
+  const HandleVerify = async () => {
+    setLoading(true)
+    const isConnected =  await portControl.CheckConn('FF');
+    setIsVerified(isConnected);
+  };
+
+  const HandleExpData = () => {
+    if(experimentRunning) {
+      portControl.manageData('MRUA', false);
+      setExperimentFinished(true);
+      setExperimentRunning(false);
+    } else {
+      setExperimentRunning(true);
+    }
+  };
+  
   return (
     <ConfigProvider
     theme={{
@@ -99,12 +123,12 @@ export default function Mechanics1() {
     >
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
       <div>
-        <SimpleGrid marginBottom={4} columns={3} spacing={2}>
-          <Button colorScheme="green" variant="solid" size="md">
+        <SimpleGrid margin={4} columns={3} spacing={8}>
+          <Button colorScheme="green" onClick={HandleVerify}  variant="solid" size="md">
             Verificar conexión
           </Button>
-          <Button disabled={!isVerified} colorScheme="blue" variant="solid" size="md">
-            Iniciar experimento
+          <Button disabled={!isVerified} onClick={HandleExpData}colorScheme="blue" variant="solid" size="md">
+          {experimentRunning ? "Detener experimento" : "Iniciar experimento"}
           </Button>
           <Button disabled={!experimentFinished} colorScheme="blue" variant="solid" size="md">
             Descargar datos
@@ -112,7 +136,7 @@ export default function Mechanics1() {
         </SimpleGrid>
       </div>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="10px" mb="20px">
-        <TotalSpent />
+        <LinePlot />
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
         <Table
@@ -120,9 +144,13 @@ export default function Mechanics1() {
           columns={columns}
           dataSource={tableData}        
         />
-        <Information title = 'Una zona para mostrar valores relevantes del experimento' value = "I can see the future, it's lookin like we level through the sky"/>
-        <Information  title = 'Experimento' value = 'I can see the future, I can see the future' />
+        <Information title = 'Detalles del experimento' value = "La caída libre es un caso especial de movimiento con aceleración constante, porque la aceleración debida a la gravedad es siempre constante y hacia abajo. Esto es cierto incluso cuando un objeto es lanzado hacia arriba o tiene velocidad cero. Por ejemplo, cuando una pelota se lanza hacia arriba en el aire, la velocidad de la bola inicialmente es hacia arriba. Como la gravedad la jala hacia la Tierra con una aceleración constante ‍, la magnitud de la velocidad disminuye a medida que la pelota se aproxima a la altura máxima."/>
       </SimpleGrid>
+    </Box>
+    <Box marginTop="5%">
+    <Center>
+    <SimulationFreeFall /> 
+    </Center>
     </Box>
     </ConfigProvider>
   );
