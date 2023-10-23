@@ -59,7 +59,7 @@ const routes = [
   {
     name: "Fisica Mecanica",
     layout: "/admin",
-    path: "/mechanics",
+    path: "",
     icon: (
       <Icon
         as={FaWeightHanging}
@@ -72,12 +72,14 @@ const routes = [
     collapse: true,
     items: [
       {
+        layout: "/admin",
         name: "Caída libre",
         path: "/mechanics-1",
         component: Mechanics1,
         icon: <Icon as={GiFallDown} width='20px' height='20px' color='inherit' />, 
       },
       {
+        layout: "/admin",
         name: "MRU",
         path: "/mechanics-2", 
         component: Mechanics2,
@@ -89,7 +91,7 @@ const routes = [
     name: "Fisica calor y ondas",
     layout: "/admin",
     icon: <Icon as={BsFire} width='20px' height='20px' color='inherit' />,
-    path: "/heat-waves",
+    path: "",
     component: HeatAndWaves,
     collapse: true,
     items: [
@@ -110,7 +112,7 @@ const routes = [
   {
     name: "Fisica electricidad",
     layout: "/admin",
-    path: "/electricity",
+    path: "",
     icon: <Icon as={MdElectricBolt} width='20px' height='20px' color='inherit' />,
     component: Electricity,
     collapse: true,

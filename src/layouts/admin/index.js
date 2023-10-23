@@ -83,20 +83,46 @@ export default function Dashboard(props) {
 		return activeNavbar;
 	};
 	const getRoutes = (routes) => {
-		return routes.map((prop, key) => {
-			if (prop.layout === '/admin') {
-				return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
-			}
+		return routes.flatMap((prop, key) => {
+		  if (prop.layout === "/admin") {
 			if (prop.collapse) {
-				return getRoutes(prop.items);
-			}
-			if (prop.category) {
-				return getRoutes(prop.items);
-			} else {
+				console.log(prop);
+				return prop.items.flatMap((item, index) => {
+					return (
+					  <Route
+						path={item.layout + item.path}
+						component={item.component}
+						key={key + "-" + index}
+					  />
+					);
+				  
+				});
+			  }
+			return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
+		  }
+		  if (prop.collapse) {
+			console.log(prop);
+			return prop.items.flatMap((item, index) => {
+			  if (item.layout === "/admin") {
+				return (
+				  <Route
+					path={item.layout + item.path}
+					component={item.component}
+					key={key + "-" + index}
+				  />
+				);
+			  } else {
 				return null;
-			}
+			  }
+			});
+		  }
+		  if (prop.category) {
+			return getRoutes(prop.items);
+		  } else {
+			return null;
+		  }
 		});
-	};
+	  };
 	document.documentElement.dir = 'ltr';
 	const { onOpen } = useDisclosure();
 	document.documentElement.dir = 'ltr';
