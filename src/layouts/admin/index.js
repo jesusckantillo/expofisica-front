@@ -20,7 +20,7 @@ export default function Dashboard(props) {
 		return window.location.pathname !== '/admin/full-screen-maps';
 	};
 	const getActiveRoute = (routes) => {
-		let activeRoute = 'Default Brand Text';
+		let activeRoute = 'Fallo al encontrar titulo';
 		for (let i = 0; i < routes.length; i++) {
 			if (routes[i].collapse) {
 				let collapseActiveRoute = getActiveRoute(routes[i].items);
@@ -33,7 +33,7 @@ export default function Dashboard(props) {
 					return categoryActiveRoute;
 				}
 			} else {
-				if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
+				if (window.location.href.indexOf( routes[i].path) !== -1) {
 					return routes[i].name;
 				}
 			}
