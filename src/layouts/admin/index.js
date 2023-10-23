@@ -85,12 +85,13 @@ export default function Dashboard(props) {
 	const getRoutes = (routes) => {
 		return routes.flatMap((prop, key) => {
 		  if (prop.layout === "/admin") {
+			let basicEnd = prop.path;
 			if (prop.collapse) {
 				console.log(prop);
 				return prop.items.flatMap((item, index) => {
 					return (
 					  <Route
-						path={item.layout + item.path}
+						path={item.layout + basicEnd + item.path}
 						component={item.component}
 						key={key + "-" + index}
 					  />

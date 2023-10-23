@@ -59,7 +59,7 @@ const routes = [
   {
     name: "Fisica Mecanica",
     layout: "/admin",
-    path: "",
+    path: "/mechanics",
     icon: (
       <Icon
         as={FaWeightHanging}
@@ -91,7 +91,7 @@ const routes = [
     name: "Fisica calor y ondas",
     layout: "/admin",
     icon: <Icon as={BsFire} width='20px' height='20px' color='inherit' />,
-    path: "",
+    path: "/heat-waves",
     component: HeatAndWaves,
     collapse: true,
     items: [
@@ -114,7 +114,7 @@ const routes = [
   {
     name: "Fisica electricidad",
     layout: "/admin",
-    path: "",
+    path: "/electricity",
     icon: <Icon as={MdElectricBolt} width='20px' height='20px' color='inherit' />,
     component: Electricity,
     collapse: true,
