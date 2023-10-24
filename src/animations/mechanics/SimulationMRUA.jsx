@@ -55,7 +55,7 @@ const SimulationMRUA = () => {
     var boxA = Bodies.circle(40, circleY, 20, {
       isStatic: false,
       render: {
-        fillStyle: "white",
+        fillStyle: "gray",
       },
     });
 
@@ -172,11 +172,20 @@ const SimulationMRUA = () => {
           </Button>
           {isApplied && (
             <Text marginBottom="5px">
-              Tiempo transcurrido: {elapsedTime / 1000} segundos
+              Tiempo transcurrido: {elapsedTime / 1000} s
             </Text>
           )}
         </Flex>
       </Box>
+      {!isApplied && (
+        <Box
+          style={{
+            width: "800px",
+            height: "600px",
+            backgroundColor: "lightgray", 
+          }}
+        ></Box>
+      )}
       {isApplied && (
         <Box
           ref={myCanvasRef}

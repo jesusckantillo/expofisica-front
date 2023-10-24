@@ -7,6 +7,7 @@ import { Box, Grid, SimpleGrid } from "@chakra-ui/react";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import Information from "../electricity/components/Information";
 import { Button, Icon } from '@chakra-ui/react'
+import MetalDetector from "animations/electricity/MetalDetector"
 
 // Assets
 import React from "react";
@@ -37,10 +38,10 @@ export default function Electricity1() {
         </SimpleGrid>
       </div>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 1 }} gap='20px' mb='20px'>
-        <TotalSpent />
+        <MetalDetector/>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
-        <Information title = 'Experimento' value = 'Este es la información base del experimento de arriba'/>
+        <Information title = 'Experimento' value = "y si me chupas lo polla"/>
       </SimpleGrid>
     </Box>
   );

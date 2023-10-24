@@ -19,7 +19,6 @@ import { experience1 } from "variables/information";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { portControl } from "../../../utils/arduinocontroller";
 import LinePlot from "../../../plots/lineplot";
-import SimulationFreeFall from "animations/SimulationFreeFall";
 
 
 

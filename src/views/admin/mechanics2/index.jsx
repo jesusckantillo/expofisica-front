@@ -2,7 +2,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-
 // Chakra imports
 import {
   Box,
@@ -19,11 +18,12 @@ import { experience1 } from "variables/information";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { portControl } from "../../../utils/arduinocontroller";
 import LinePlot from "../../../plots/lineplot";
-import SimulationFreeFall from "animations/SimulationFreeFall";
+import LinePlot2 from "../../../plots/lineplot2";
+import SimulationMRUA from "animations/mechanics/SimulationMRUA";
 
 
 
-export default function Mechanics({loading, setLoading}) {
+export default function Mechanics() {
 
   const tableStyles = {
     border: '1px solid #e8e8e8',
@@ -83,18 +83,18 @@ export default function Mechanics({loading, setLoading}) {
 
   //Handle functions
   const HandleVerify = async () => {
-    setLoading(true)
     const isConnected =  await portControl.CheckConn('MRUA');
     setIsVerified(isConnected);
   };
 
   const HandleExpData = () => {
     if(experimentRunning) {
-      portControl.manageData('MRUA', false);
+      portControl.manageData('MRUA', true);
       setExperimentFinished(true);
       setExperimentRunning(false);
     } else {
       setExperimentRunning(true);
+      portControl.manageData('MRUA', false);
     }
   };
   
@@ -123,7 +123,7 @@ export default function Mechanics({loading, setLoading}) {
     >
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
       <div>
-        <SimpleGrid margin={4} columns={3} spacing={8}>
+        <SimpleGrid margin={4} columns={4} spacing={8}>
           <Button colorScheme="green" onClick={HandleVerify}  variant="solid" size="md">
             Verificar conexión
           </Button>
@@ -135,7 +135,11 @@ export default function Mechanics({loading, setLoading}) {
           </Button>
         </SimpleGrid>
       </div>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="10px" mb="20px">
+      <SimpleGrid columns={{ base: 1, md: 2, xl: 1 }} gap="10px" mb="20px">
+        <LinePlot />
+      </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="10px" mb="20px">
+        <LinePlot />
         <LinePlot />
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
@@ -149,7 +153,7 @@ export default function Mechanics({loading, setLoading}) {
     </Box>
     <Box marginTop="5%">
     <Center>
-    <SimulationFreeFall /> 
+    <SimulationMRUA/>
     </Center>
     </Box>
     </ConfigProvider>

@@ -21,7 +21,7 @@ const LinePlot = () => {
    },
     yaxis: {
       title: {
-        text: "Distancia (cm)"
+        text: "Velocidad (m/s)"
       }
     },
     markers: {
@@ -29,8 +29,8 @@ const LinePlot = () => {
       style: 'hollow',
     }, 
     dataLabels: {
-      enabled: false // <--- HERE
-    }
+        enabled: false
+      }
   };
 
   const MAX_POINTS = 100;
@@ -83,11 +83,11 @@ const LinePlot = () => {
   const updateData = (data) => {
     const parsedData = JSON.parse(data);
     console.log(data)
-    const { time, distance} =  parsedData.MRUA;
+    const { time, speed} =  parsedData.MRUA;
     setSeries(prevSeries => {
       const newData = { 
         x: time, 
-        y: distance,
+        y: speed,
       };
       const updatedSeries = [{ ...prevSeries[0], data: [...prevSeries[0].data, newData] }];
       if (updatedSeries[0].data.length > MAX_POINTS) {

@@ -1,22 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Matter from "matter-js";
-import { Button, Heading,Select, Flex, Text, Box , ChakraProvider} from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
-
-
-
-
+import { Button, Select, Flex, Text, Box } from "@chakra-ui/react";
 
 const SimulationFreeFall = () => {
-  const theme = extendTheme({
-    fonts: {
-      body: "Plus Jakarta Sans",
-      heading: "Plus Jakarta Sans",
-    },
-  });
-  
-
-
   const [reset, setReset] = useState(false);
   const [airFrictionBoxA, setAirFrictionBoxA] = useState(0);
   const [airFrictionBoxB, setAirFrictionBoxB] = useState(0);
@@ -38,18 +24,14 @@ const SimulationFreeFall = () => {
         width: 800,
         height: 600,
         wireframes: false,
-        background: "transparent",
-        //i want a border
-        showAngleIndicator: true,
       },
     });
-
 
     var boxB = Bodies.circle(500, 200, 20, {
       isStatic: false,
       frictionAir: airFrictionBoxB,
       render: {
-        fillStyle: "blue",
+        fillStyle: "white",
       },
     });
 
@@ -57,14 +39,14 @@ const SimulationFreeFall = () => {
       isStatic: false,
       frictionAir: airFrictionBoxA,
       render: {
-        fillStyle: "blue",
+        fillStyle: "gray",
       },
     });
 
     var groundOptions = {
       isStatic: true,
       render: {
-        fillStyle: "white",
+        fillStyle: "gray",
       },
     };
 
@@ -101,12 +83,12 @@ const SimulationFreeFall = () => {
   }, [reset, airFrictionBoxA, airFrictionBoxB, myCanvasRef]);
 
   return (
-   <ChakraProvider theme={theme}>
-     <Flex flexDirection="row" justifyContent="space-evenly">
-        <Box p='4'>
-          <Heading>Simulación Caida Libre</Heading>
-          <Flex flexDirection="column">
-
+    <Flex flexDirection="row">
+      <Box p="4">
+        <Text fontSize="3xl" color="teal" as="samp">
+          SIMULACION
+        </Text>
+        <Flex flexDirection="column">
           <Text marginBottom="5px">Gravedad Figura 1</Text>
           <Select
             value={airFrictionBoxA}
@@ -123,7 +105,7 @@ const SimulationFreeFall = () => {
           <Select
             value={airFrictionBoxB}
             onChange={(e) => setAirFrictionBoxB(Number(e.target.value))}
-            width="350px"
+            width="150px"
             marginBottom="20px"
           >
             <option value="0">Tierra</option>
@@ -132,7 +114,7 @@ const SimulationFreeFall = () => {
             <option value="0.05">Urano</option>
           </Select>
           <Button
-            colorScheme="blue"
+            colorScheme="teal"
             onClick={() => {
               setReset(true);
               setIsApplied(true);
@@ -141,17 +123,25 @@ const SimulationFreeFall = () => {
           >
             Aplicar
           </Button>
-          </Flex>
-        </Box>
+        </Flex>
+      </Box>
+      {!isApplied && (
+        <Box
+          style={{
+            width: "800px",
+            height: "600px",
+            backgroundColor: "lightgray", // Color de fondo
+          }}
+        ></Box>
+      )}
       {isApplied && (
         <Box
-        style={{ marginRight: "30px", backgroundColor: "white", border: "2px solid blue", borderRadius: "2px" }}
           ref={myCanvasRef}
           id="myCanvas"
+          style={{ marginRight: "20px" }}
         ></Box>
       )}
     </Flex>
-    </ChakraProvider>
   );
 };
 

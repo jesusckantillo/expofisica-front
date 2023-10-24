@@ -18,7 +18,7 @@ export default function UserReports() {
           Bienvenido a {<Text as="span" color={brandColor}>SIRIUS</Text>}
         </Heading>
         <Text fontSize="xl" mb="20px">
-          Una plataforma para el análisis de datos de experimentos de física universitaria
+         Sistema interactivo de aprendizaje con experiencias fisicas
         </Text>
         <Box display="flex" justifyContent="center" alignItems="center">
           <Image src={mockup} alt="SIRIUS" maxWidth="45%" mb="20px" borderRadius="20px"/>
@@ -28,14 +28,6 @@ export default function UserReports() {
             Comenzar
           </Button>
         </Link>
-        <Box display="flex" justifyContent="center" alignItems="center" marginBlock="150px">
-          <Heading as="h2" size="2xl" mb="10px" marginRight='30px'>
-            NIQQA
-          </Heading>
-         
-          
-          <Image boxShadow="0px 0px 50px red" src={twiceGif} alt="SIRIUS" maxWidth="45%" marginLeft="40px" mb="10px" borderRadius="20px" />
-        </Box>
       </Box>
     </Box>
   );

@@ -19,7 +19,7 @@ import { experience1 } from "variables/information";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { portControl } from "../../../utils/arduinocontroller";
 import LinePlot from "../../../plots/lineplot";
-import SimulationFreeFall from "animations/SimulationFreeFall";
+import SimulationFreeFall from "animations/mechanics/SimulationFreeFall";
 
 
 
@@ -84,7 +84,7 @@ export default function Mechanics({loading, setLoading}) {
   //Handle functions
   const HandleVerify = async () => {
     setLoading(true)
-    const isConnected =  await portControl.CheckConn('FF');
+    const isConnected =  await portControl.CheckConn('');
     setIsVerified(isConnected);
   };
 
