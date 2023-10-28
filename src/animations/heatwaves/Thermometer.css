@@ -1,0 +1,44 @@
+.thermometer {
+    display: block;
+    position: relative;
+    height: 200px; 
+}
+
+.bulb {
+    display: inline-block;
+    border: 4px solid #222; 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    border-top: 4px  #fff;
+    box-shadow: 0px 0px 0px 4px #fff inset;
+    background: red;
+}
+
+.stem {
+    display: inline-block;
+    border: 4px solid #222; 
+    width: 30px;
+    height: 160px;
+    border-radius: 0px 0px 40px 40px; 
+    border-top: 4px solid transparent;
+    position: absolute;
+    bottom: 40px; 
+    left: 10px; 
+    box-shadow: 0px 0px 0px 4px #fff inset; 
+    transform: rotate(180deg);
+    z-index: 10;
+    padding-bottom: 8px; 
+}
+
+.stem-perct {
+    height: 160px;
+    width: 16px;
+    background: red;
+    display: block;
+    margin: 0px auto;
+    border-top: 20px;
+}
