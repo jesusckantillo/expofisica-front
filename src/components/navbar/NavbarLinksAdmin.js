@@ -59,17 +59,21 @@ import povea from '../../assets/img/teampics/JUANPOVEA.jpg';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const slides = [
-	{ image: adrianimg, text: "Adrian Gongora" , major: "Ingeniería Electronica" },
+	{ image: adrianimg, text: "Adrian Gongora" , major: "Ingen----------------------------iería Electronica" },
 	{ image: anyeliimg, text: "Anyeli Sanjuan", major: "Ingeniería Civil" },
-	{ image: chrisimg, text: "Chis Cabana", major: "Ingeniería Electronica" },
+	{ image: chrisimg, text: "Chris Cabana", major: "Ingeniería Electronica" },
 	{ image: elkinimg, text: "Elkin Pulgar" , major: "Ingeniería Electronica"},
 	{ image: haxelimg, text: "Haxell Gomez" , major: "Ingeniería Electronica"},
 	{ image: isaimg, text: "Isabela Chacón", major: "Ingeniería Electrica" },
-	{ image: bornaimg, text: "Juan Bornacelly", major: "Ingeniería Electrica" },
+	{ image: bornaimg, text: "Juan Bornacelly", major: "Ingeniería Electronica" },
 	{ image: jesusimg, text: "Jesús Cantillo" , major : "Ingeniería de Sistemas"},
+<<<<<<< Updated upstream
 	{ image: barceloimg, text: "Juan Barcelo", major: "Ingeniería Electronica" },
+=======
+	{ image: barceloimg, text: "Juan Barceló", major: "Ingeniería Electronica" },
+>>>>>>> Stashed changes
 	{ image: bermejoimg, text: "Juan Bermejo", major: "Ingeniería Electronica" },
-	{ image: ortegaimg, text: "José Ortega" , major: "Ingeniería Electronica"},
+	{ image: ortegaimg, text: "José Mendoza" , major: "Ingeniería Electronica"},
 	{ image: lucasimg, text: "Lucas Romero", major: "Ingeniería Electronica" },
 	{ image: sebasimg, text: "Sebastian Escobar", major: "Ingeniería Electronica" },
 	{ image: yzhu, text: "Yovany Zhu" , major : "Ingeniería de Sistemas"},

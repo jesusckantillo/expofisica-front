@@ -71,9 +71,13 @@ export default function Mechanics({loading, setLoading}) {
 
   const HandleExpData = () => {
     if(experimentRunning) {
+<<<<<<< Updated upstream
       portControl.manageData('FF', true);
+=======
+>>>>>>> Stashed changes
       setExperimentFinished(true);
       setExperimentRunning(false);
+      portControl.manageData('FF', true);
     } else {
       setExperimentRunning(true);
       portControl.manageData('FF', false);

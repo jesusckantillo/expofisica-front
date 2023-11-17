@@ -84,9 +84,9 @@ export default function Mechanics({loading, setLoading}) {
 
   const HandleExpData = () => {
     if(experimentRunning) {
-      portControl.manageData('MF', true);
       setExperimentFinished(true);
       setExperimentRunning(false);
+      portControl.manageData('MF', true);
     } else {
       setExperimentRunning(true);
       portControl.manageData('MF', false);
