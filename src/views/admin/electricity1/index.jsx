@@ -49,8 +49,8 @@ export default function Electricity1() {
           <Button colorScheme="green" onClick={HandleVerify} variant="solid" size="md">
             Verificar conexión
           </Button>
-          <Button colorScheme="blue" onClick={HandleExpData} variant="solid" size="md">
-          Detener experimento
+          <Button disabled={!isVerified} colorScheme="blue" onClick={HandleExpData} variant="solid" size="md">
+          {experimentRunning ? "Detener experimento" : "Iniciar experimento"}
           </Button>
           <Button disabled={!experimentFinished} colorScheme="blue" variant="solid" size="md">
             Descargar datos

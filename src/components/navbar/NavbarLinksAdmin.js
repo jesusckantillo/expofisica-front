@@ -67,7 +67,7 @@ const slides = [
 	{ image: isaimg, text: "Isabela Chacón", major: "Ingeniería Electrica" },
 	{ image: bornaimg, text: "Juan Bornacelly", major: "Ingeniería Electrica" },
 	{ image: jesusimg, text: "Jesús Cantillo" , major : "Ingeniería de Sistemas"},
-	{ image: barceloimg, text: "fan de momo", major: "Ingeniería Electronica" },
+	{ image: barceloimg, text: "Juan Barcelo", major: "Ingeniería Electronica" },
 	{ image: bermejoimg, text: "Juan Bermejo", major: "Ingeniería Electronica" },
 	{ image: ortegaimg, text: "José Ortega" , major: "Ingeniería Electronica"},
 	{ image: lucasimg, text: "Lucas Romero", major: "Ingeniería Electronica" },

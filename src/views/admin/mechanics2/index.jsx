@@ -112,9 +112,9 @@ export default function Mechanics() {
           </Button>
         </SimpleGrid>
       </div>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 1 }} gap="10px" mb="20px">
+      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap="10px" mb="20px">
         <LinePlot2 xaxis="time" xname="Tiempo(s)" yname="Distancia(cm)" yaxis="distance" />
-  
+        <LinePlot2 xaxis="time" xname="Tiempo(s)" yname="Velocidad(cm/s)" yaxis="" />
       </SimpleGrid>
       <SimpleGrid margin="3%" columns={{ base: 1, md: 2, xl: 2 }} gap="20px" mb="20px">
         <Information title = 'Movimiento de una particula' value = "El movimiento de una partícula es un caso especial de movimiento con aceleración constante, porque la aceleración debida a la gravedad es siempre constante y hacia abajo. Esto es cierto incluso cuando un objeto es lanzado hacia arriba o tiene velocidad cero. Por ejemplo, cuando una pelota se lanza hacia arriba en el aire, la velocidad de la bola inicialmente es hacia arriba. Como la gravedad la jala hacia la Tierra con una aceleración constante ‍, la magnitud de la velocidad disminuye a medida que la pelota se aproxima a la altura máxima."/>

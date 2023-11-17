@@ -10,26 +10,24 @@ function MetalDetector(props) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isFerrous, setIsFerrous] = useState(false);
 
-  const handleSelectImage = (index) => {
-    if (selectedImage === index) {
-      setSelectedImage(null);
-    } else {
-      setSelectedImage(index);
-    }
-  };
+const handleSelectImage = (isFerrous) => {
+  setSelectedImage(isFerrous ? 0 : 1);
+};
 
-  useEffect(() => {
-    socket.on('expData', (data) => {
-      const parsedData = JSON.parse(data)
-      const {isFerrous} = parsedData.MD
-      if (isFerrous===1) {
-        setIsFerrous(true);
-      } else {
-        setIsFerrous(false);
-      }
-      setSelectedImage(isFerrous ? 0 : 1);
-    });
-  }, []);
+useEffect(() => {
+  socket.on('MD', (data) => {
+    const parsedData = JSON.parse(data)
+    const {isFerrous} = parsedData.MD
+    const isFerrousNumber = Number(isFerrous);
+    if (isFerrousNumber===1) {
+      setIsFerrous(true);
+    } else {
+      setIsFerrous(false);
+    }
+    handleSelectImage(isFerrousNumber);
+  });
+}, []);
+
 
 
   const images = [
@@ -41,20 +39,21 @@ function MetalDetector(props) {
     <ChakraProvider>
       <Box display="flex" flexDirection="row">
         {images.map((image, index) => (
-          <div key={index}>
-            <Image
-              src={image.src}
-              alt={image.alt}
-              filter={selectedImage === index ? "" : "brightness(0.5)"}
-              onMouseEnter={() => handleSelectImage(index)}
-              onMouseLeave={() => handleSelectImage(index)}
-            />
-          </div>
-        ))}
+  <div style={{display: '', justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
+    <Image
+      
+      src={image.src}
+      alt={image.alt}
+      filter={selectedImage === index ? "" : "brightness(0.5)"}
+    />
+    
+    
+  </div>
+))}
+
       </Box>
     </ChakraProvider>
   );
 }
 
 export default MetalDetector;
-

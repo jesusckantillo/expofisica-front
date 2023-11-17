@@ -2,17 +2,18 @@ import socket from '../socket'
 
 async function SimpleCheckConn(experiment) {
   return new Promise((resolve, reject) => {
-    socket.emit('checkConn', experiment);
-    socket.once('checkConn', status => {
+    socket.emit('checkConnFake', experiment);
+    socket.once('checkConnFake', status => {
         resolve(status.status);
     });
   });
 }
 
+
 const CheckConn = (experiment) => {
   return new Promise((resolve, reject) => {
-    socket.emit('checkConn', experiment);
-    socket.once('checkConn', (status) => {
+    socket.emit('checkConnFake', experiment);
+    socket.once('checkConnFake', (status) => {
       console.log('Server response:', status);
       console.log(status.status)
       console.log(experiment)
@@ -33,9 +34,9 @@ const CheckConn = (experiment) => {
 
     if (isConnected) {
       if (!isSendingData) {
-        socket.emit('startExperiment', true, 'expData');
+        socket.emit('MD');
       } else { // It's sending data
-        socket.emit('startExperiment', false, 'expData');
+        socket.emit('pause');
       }
     } else {
       console.log("Failed conection");
