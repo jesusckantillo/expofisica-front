@@ -27,27 +27,20 @@ const CheckConn = (experiment) => {
 };
 
   const manageData = async (experiment, isSendingData) => {
-    console.log("dato",isSendingData)
-    const isConnected = await SimpleCheckConn(experiment);
 
-    if (isConnected) {
-<<<<<<< Updated upstream
-      if (!isSendingData) {
-        socket.emit('MD');
-      } else { // It's sending data
-        socket.emit('pause');
-=======
-      if (isSendingData) {
-        socket.emit('startExperiment', false, 'expData');
-      } else { // It's not sending data
-        socket.emit('startExperiment', true, 'expData');
->>>>>>> Stashed changes
+      const isConnected = await SimpleCheckConn(experiment);
+
+      if (isConnected) {
+          if (!isSendingData) {
+              socket.emit('MD');
+          } else { // It's sending data
+              socket.emit('pause');
+          }
+      } else {
+          console.log("Failed conection");
       }
+  }
 
-    } else {
-      console.log("Failed conection");
-    }
-  };
   const portControl = {
     CheckConn,
     manageData
